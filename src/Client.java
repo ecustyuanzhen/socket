@@ -34,12 +34,21 @@ public class Client {
      * @throws IOException
      */
     private static void genProtocol(DataOutputStream out, String msg) throws IOException {
-        byte[] bytes = msg.getBytes();         //消息内容
-        int totalLen = 4 + bytes.length;   //消息长度
+        byte[] result = msg.getBytes("GB2312");         //消息内容
 
-        out.writeInt(totalLen);                //写入消息长度
-        out.write(bytes);                      //写入消息内容
+        byte[] length = htonl(result.length);   //消息长度
+        out.write(length);                //写入消息长度
+        out.write(result);                      //写入消息内容
 
         out.flush();
+    }
+
+    private static byte[] htonl(int length) {
+        byte[] array = new byte[4];
+        array[0] = (byte) ((length >> 24) & 0xff);
+        array[1] = (byte) ((length >> 16) & 0xff);
+        array[2] = (byte) ((length >> 8) & 0xff);
+        array[3] = (byte) (length & 0xff);
+        return array;
     }
 }

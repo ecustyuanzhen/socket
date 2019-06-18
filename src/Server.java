@@ -35,7 +35,7 @@ public class Server {
         //协议解析
         while (true) {
             int totalLen = dis.readInt();             //读取消息长度
-            byte[] data = new byte[totalLen - 4];     //定义存放消息内容的字节数组
+            byte[] data = new byte[totalLen];     //定义存放消息内容的字节数组
             dis.readFully(data);                      //读取消息内容
             String msg = new String(data);            //消息内容
 

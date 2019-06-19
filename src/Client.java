@@ -1,3 +1,4 @@
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -15,10 +16,8 @@ public class Client {
             Socket client = new Socket("127.0.0.1", 8080);
             OutputStream out = client.getOutputStream();
             DataOutputStream outs = new DataOutputStream(out);
-            while (true) {
-                Scanner scaner = new Scanner(System.in);
-                genProtocol(outs, scaner.next());
-            }
+            DataInputStream in = new DataInputStream(client.getInputStream());
+            System.out.println(in.readUTF());
         } catch (UnknownHostException e) {
             e.printStackTrace();
         } catch (IOException e) {

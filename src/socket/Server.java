@@ -58,9 +58,9 @@ public class Server extends Thread {
             System.out.println("接收消息长度" + totalLen);
             System.out.println("发来的内容是:" + msg);
             if (totalLen > 11) {
-                msg = "袁振帅";
+                msg = "MASTER 袁振帅";
             } else {
-                msg = "老姚帅";
+                msg = "MASTER 老姚帅";
             }
             byte[] bytes = ProtocolHelper.htonl(msg.length());
             out.write(bytes);

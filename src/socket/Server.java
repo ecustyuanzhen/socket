@@ -60,7 +60,7 @@ public class Server extends Thread {
             if (totalLen > 11) {
                 msg = "master 袁振帅";
             } else {
-                msg = "master 老姚帅";
+                msg = "develop 袁振帅";
             }
             byte[] bytes = ProtocolHelper.htonl(msg.length());
             out.write(bytes);

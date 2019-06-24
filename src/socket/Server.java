@@ -74,5 +74,4 @@ public class Server extends Thread {
     public static void main(String[] args) {
         new Server(8088).start();
     }
-
 }
